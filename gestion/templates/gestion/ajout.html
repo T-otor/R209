@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>VUAFGROUP SAS - Gestion des stocks informatiques</title>
+    <link rel="stylesheet" type="text/css" href="{%static "gestion/index.css" %}">
+</head>
+<body>
+    <section class="titre">
+    <h1 class="titre">VUAFGROUP SAS </h1>
+    <h2 class="titre">Gestions des stocks informatiques</h2>
+    <h3 class="titre">Créer un nouvel enregistrement</h3>
+    </section>
+<section>
+<body>
+    <form method="post" action="/gestion/traitement/">
+    {% csrf_token %}
+    {{ form.as_ul }} <!-- permet d'afficher tous les champs sous forme d'une liste
+    -->
+    <input type="submit" value="envoyer␣les␣données"\>
+    </form>
+</section>
+</html>
+</section>
+</body>
+</html>
