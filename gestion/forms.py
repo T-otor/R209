@@ -4,10 +4,11 @@ from . import models
 class FormRAM(ModelForm):
     class Meta:
         model = models.RAM
-        fields = ('Marque', 'Modèle', 'Type', 'Capacité')
+        fields = ('Marque', 'Modèle', 'Type', 'Capacité', 'SN')
         labels = {
         'Marque' : _('Marque'),
         'Modèle' : _('Modèle') ,
         'Type' : _('Type DDR (DDRX)'),
-        'Capacité' : _('Capacité de la barette')
+        'Capacité' : _('Capacité de la barette'),
+        'SN' : ('Numéro de série')
         }

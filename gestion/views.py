@@ -1,3 +1,4 @@
+from operator import le
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .forms import FormRAM
@@ -15,7 +16,9 @@ def show(request):
 
 def showram(request):
     queryset = models.RAM.objects.all()  
-    return render(request,"gestion/showram.html",{"Ram " : queryset})
+    print(queryset)
+    print(len(queryset))
+    return render(request,"gestion/showram.html",{"gestion_ram" : queryset})
 
 def formulaire(request):
     if request.method == "POST":

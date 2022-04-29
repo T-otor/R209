@@ -13,26 +13,31 @@
     <h3 class="titre">Voir le stock RAM</h3>
     </section>
 <section>
-    {% for RAM in Ram %}
+    {% for Ram in gestion_ram %}
     <table class="table is-fullwidth is-hoverable">
         <thead>
           <tr>
+            <th>ID</th>
             <th>Marque</th>
             <th>Modèle</th>
             <th>Type</th>
             <th>Capacité</th>
+            <th>Numéro de Série</th>
           </tr>
         </thead>
         <tbody>
           <tr>
+            <td>{{Ram.id}}</td>
             <td>{{Ram.Marque}}</td>
-            <td>{{RAM.Modèle}}</td>
-            <td>{{RAM.Type}}</td>
-            <td>{{RAM.Capacité}}</td>
-            <td>
+            <td>{{Ram.Modèle}}</td>
+            <td>{{Ram.Type}}</td>
+            <td>{{Ram.Capacité}}</td>
+            <td>{{Ram.SN}}</td>
           </tr>
 
         </tbody>
       </table>
-   
+      
 {% endfor %}     
+<a href='/gestion/index'class="bouton">Retour à l'accueil</a>
+<a href='/gestion/delete/ram'class="bouton">Supprimer une entrée</a>
