@@ -6,5 +6,6 @@ urlpatterns = [
     path('ajout/', views.ajout),
     path('formulaire.html', views.formulaire, name='formulaire'),
     path('traitement', views.traitement),
-    path('show', views.show)
+    path('show', views.show),
+    path('show/ram', views.showram)
 ]

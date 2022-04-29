@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>VUAFGROUP SAS - Gestion des stocks informatiques</title>
+    <link rel="stylesheet" type="text/css" href="{%static "gestion/index.css" %}">
+</head>
+<body>
+    <section class="titre">
+    <h1 class="titre">VUAFGROUP SAS </h1>
+    <h2 class="titre">Gestions des stocks informatiques</h2>
+    <h3 class="titre">Voir le stock RAM</h3>
+    </section>
+<section>
+    {% for RAM in Ram %}
+    <table class="table is-fullwidth is-hoverable">
+        <thead>
+          <tr>
+            <th>Marque</th>
+            <th>Modèle</th>
+            <th>Type</th>
+            <th>Capacité</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{Ram.Marque}}</td>
+            <td>{{RAM.Modèle}}</td>
+            <td>{{RAM.Type}}</td>
+            <td>{{RAM.Capacité}}</td>
+            <td>
+          </tr>
+
+        </tbody>
+      </table>
+   
+{% endfor %}     
