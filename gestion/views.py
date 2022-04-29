@@ -9,6 +9,9 @@ def index(request):
 def ajout(request):
     return render(request,'gestion/ajout.html')
 
+def show(request):
+    return render(request, 'gestion/show.html')
+
 def formulaire(request):
     if request.method == "POST":
         form = FormRAM(request)
@@ -18,15 +21,16 @@ def formulaire(request):
             return render(request, 'gestion/ajout.html', {'form': form})
     else:
         form = FormRAM()
-        return render(request, 'gestion/index', {'form': form})
+        return render(request, 'gestion/index.html', {'form': form})
 
 def traitement(request):
-    pForm = FormRAM(request.POST)
-    if pForm.is_valid():
-        livre = pForm.save()
-        return render(request, 'gestion/ram.html' , {'ram' : livre})
+    lform = FormRAM(request.POST)
+    if lform.is_valid():
+        livre = lform.save()
+        return render(request,"gestion/index.html",{"livre" : livre})
     else:
-        return render(request, 'gestion/index', {'form': pForm})
+        return render(request,"gestion/ajout.html",{"form": lform})
+
 
 def ajout(request):
     if request.method == "POST":

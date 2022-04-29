@@ -14,7 +14,7 @@
     </section>
 <section>
 <body>
-    <form method="post" action="/gestion/traitement/">
+    <form method="post" action="/gestion/traitement">
     {% csrf_token %}
     {{ form.as_ul }} <!-- permet d'afficher tous les champs sous forme d'une liste
     -->
