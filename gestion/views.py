@@ -57,3 +57,18 @@ def deleteram(request, id):
     id = models.RAM.objects.get(pk=id)
     id.delete()
     return HttpResponseRedirect("/gestion/show/ram")
+
+def update(request, id):
+    id = models.RAM.objects.get(pk=id)
+    form = FormRAM(id.dicoram())
+    return render(request, 'gestion/ajout.html',{"form":form, "id":id})
+
+def updatetraitement(request, id):
+    lform = FormRAM(request.POST)
+    if lform.is_valid():
+        ram = lform.save(commit = False)
+        ram.id = id
+        ram.save()
+        return render(request,"gestion/index.html",{"Ram" : ram})
+    else:
+        return render(request,"gestion/ajout.html",{"form": lform, 'id':id})

@@ -14,7 +14,11 @@
     </section>
 <section>
 <body>
+    {% if id != ''%}
+    <form method="post" action="/gestion/show/ram/updatetraitement/{{id}}/">
+    {%else%}
     <form method="post" action="/gestion/traitement">
+    {% endif %}
     {% csrf_token %}
     {{ form.as_ul }} <!-- permet d'afficher tous les champs sous forme d'une liste
     -->
