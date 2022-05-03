@@ -52,3 +52,8 @@ def ajout(request):
     else :
         form = FormRAM() # création d'un formulaire vide
         return render(request,"gestion/ajout.html",{"form" : form})
+
+def deleteram(request, id):
+    id = models.RAM.objects.get(pk=id)
+    id.delete()
+    return HttpResponseRedirect("/gestion/show/ram")

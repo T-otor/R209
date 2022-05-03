@@ -34,11 +34,11 @@
             <td>{{Ram.Capacité}}</td>
             <td>{{Ram.SN}}</td>
           </tr>
-          
 
         </tbody>
+        
       </table>
-      
+      <a href='ram/modifier/{{Ram.id}}'class='bouton'>Modifier</a>
+      <a href='ram/delete/{{Ram.id}}'class='bouton'>Supprimer</a>
 {% endfor %}     
 <a href='/gestion/index'class="bouton">Retour à l'accueil</a>
-<a href='/gestion/delete/ram'class="bouton">Supprimer une entrée</a>
