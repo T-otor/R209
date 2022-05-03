@@ -11,3 +11,13 @@ class RAM(models.Model):
     def __str__(self):
         chaine = f"Barrette {self.Marque}, modèle {self.Modèle}, de la {self.Type} avec une capacité de {self.Capacité}"
         return chaine
+
+class CPU(models.Model): 
+    Marque = models.CharField(max_length=100) 
+    Modèle = models.CharField(max_length = 100)
+    Fréquence = models.CharField(max_length = 4)
+    SN = models.CharField(max_length=20)
+    
+    def __str__(self):
+        chaine = f"CPU {self.Marque}, modèle {self.Modèle}, avec une fréquence de {self.Fréquence} "
+        return chaine

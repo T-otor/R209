@@ -1,3 +1,4 @@
+from cProfile import label
 from django.forms import ModelForm
 from django.utils.translation import gettext_lazy as _
 from . import models
@@ -11,4 +12,16 @@ class FormRAM(ModelForm):
         'Type' : _('Type DDR (DDRX)'),
         'Capacité' : _('Capacité de la barette'),
         'SN' : ('Numéro de série')
+        }
+
+
+class FormCPU(ModelForm):
+    class Meta:
+        model = models.CPU
+        fields = ('Marque', 'Modèle', 'Fréquence', 'SN')
+        labels = {
+            'Marque' : _('Marque'),
+            'Modèle' : _('Modèle'),
+            'Fréquence' : _('Fréquence'),
+            'SN' : ('Numéro de série')
         }
