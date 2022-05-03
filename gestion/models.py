@@ -11,7 +11,7 @@ class RAM(models.Model):
     def __str__(self):
         chaine = f"Barrette {self.Marque}, modèle {self.Modèle}, de la {self.Type} avec une capacité de {self.Capacité}"
         return chaine
-    def dicoram(self):
+    def dico(self):
         return {'Marque': self.Marque, "Modèle": self.Modèle, 'Type': self.Type, 'Capacité': self.Capacité, 'SN': self.SN}
 
 class CPU(models.Model): 

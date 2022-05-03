@@ -40,7 +40,7 @@ def traitement(request):
         return render(request,"gestion/ajout.html",{"form": lform})
 
 
-def ajout(request):
+def ajout(request, id):
     if request.method == "POST":
         form = FormRAM(request)
         if form.is_valid(): # validation du formulaire.
@@ -59,8 +59,8 @@ def deleteram(request, id):
     return HttpResponseRedirect("/gestion/show/ram")
 
 def update(request, id):
-    id = models.RAM.objects.get(pk=id)
-    form = FormRAM(id.dicoram())
+    ram = models.RAM.objects.get(pk=id)
+    form = FormRAM(ram.dico())
     return render(request, 'gestion/ajout.html',{"form":form, "id":id})
 
 def updatetraitement(request, id):
