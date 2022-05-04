@@ -23,4 +23,6 @@ class CPU(models.Model):
     def __str__(self):
         chaine = f"CPU {self.Marque}, modèle {self.Modèle}, avec une fréquence de {self.Fréquence} "
         return chaine
+    def dico(self):
+        return {'Marque': self.Marque, "Modèle": self.Modèle, "Fréquence": self.Fréquence, "SN": self.SN}
 

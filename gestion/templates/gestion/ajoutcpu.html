@@ -10,8 +10,16 @@
     <section class="titre">
     <h1 class="titre">VUAFGROUP SAS </h1>
     <h2 class="titre">Gestions des stocks informatiques</h2>
-    <h3 class="titre">Voir le stock</h3>
+    <h3 class="titre">Créer un nouvel enregistrement</h3>
     </section>
 <section>
-    <a href='show/ram'class="bouton">Stock de RAM</a>
-    <a href='show/cpu'class="bouton">Stock de CPU</a>
+    <form method="post" action="/gestion/traitementcpu">
+    {% csrf_token %}
+    {{ form.as_ul }} <!-- permet d'afficher tous les champs sous forme d'une liste
+    -->
+    <input type="submit" value="envoyer␣les␣données"\>
+    </form>
+</section>
+</section>
+</body>
+</html>

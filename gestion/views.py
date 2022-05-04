@@ -1,7 +1,7 @@
 from operator import le
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from .forms import FormRAM
+from .forms import FormCPU, FormRAM
 from . import models
 
 # Create your views here.
@@ -72,3 +72,39 @@ def updateramtraitement(request, id):
         return render(request,"gestion/index.html",{"Ram" : ram})
     else:
         return render(request,"gestion/ajoutram.html",{"form": lform, 'id':id})
+
+
+def ajoutcpu(request, id):
+    if request.method == "POST":
+        form = FormCPU(request)
+        if form.is_valid(): # validation du formulaire.
+            cpu = form.save() # sauvegarde dans la base
+            return render(request,"gestion/affiche.html",{"Cpu" : cpu}) #
+
+        else:
+            return render(request,"gestion/ajoutcpu.html",{"form": form})
+    else :
+        form = FormCPU() # création d'un formulaire vide
+        return render(request,"gestion/ajoutcpu.html",{"form" : form})
+def traitementcpu(request):
+    lform = FormCPU(request.POST)
+    if lform.is_valid():
+        ram = lform.save()
+        return render(request,"gestion/index.html",{"Cpu" : cpu})
+    else:
+        return render(request,"gestion/ajoutcpu.html",{"form": lform})
+def showcpu(request):
+    queryset = models.CPU.objects.all()  
+    print(queryset)
+    print(len(queryset))
+    return render(request,"gestion/showcpu.html",{"gestion_cpu" : queryset})
+
+def updatecpu(request, id):
+    ram = models.CPU.objects.get(pk=id)
+    form = FormCPU(ram.dico())
+    return render(request, 'gestion/ajoutcpu.html',{"form":form, "id":id})
+
+def deletecpu(request, id):
+    id = models.CPU.objects.get(pk=id)
+    id.delete()
+    return HttpResponseRedirect("/gestion/show/cpu")

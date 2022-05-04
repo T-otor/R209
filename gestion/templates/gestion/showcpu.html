@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>VUAFGROUP SAS - Gestion des stocks informatiques</title>
+    <link rel="stylesheet" type="text/css" href="{%static "gestion/index.css" %}">
+</head>
+<body>
+    <section class="titre">
+    <h1 class="titre">VUAFGROUP SAS </h1>
+    <h2 class="titre">Gestions des stocks informatiques</h2>
+    <h3 class="titre">Voir le stock CPU</h3>
+    </section>
+<section>
+    {% for Cpu in gestion_cpu %}
+    <table class="table is-fullwidth is-hoverable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Marque</th>
+            <th>Modèle</th>
+            <th>Fréquence</th>
+            <th>Numéro de Série</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{Cpu.id}}</td>
+            <td>{{Cpu.Marque}}</td>
+            <td>{{Cpu.Modèle}}</td>
+            <td>{{Cpu.Fréquence}}</td>
+            <td>{{Cpu.SN}}</td>
+          </tr>
+
+        </tbody>
+        
+      </table>
+      <a href='cpu/update/{{Cpu.id}}'class='bouton'>Modifier</a>
+      <a href='cpu/delete/{{Cpu.id}}'class='bouton'>Supprimer</a>
+{% endfor %}     
+<a href='/gestion/index'class="bouton">Retour à l'accueil</a>
