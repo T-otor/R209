@@ -10,18 +10,10 @@
     <section class="titre">
     <h1 class="titre">VUAFGROUP SAS </h1>
     <h2 class="titre">Gestions des stocks informatiques</h2>
-    {% if id != ''%}
-        <h3 class="titre">Modifier un enregistrement</h3>
-    {%else%}
     <h3 class="titre">Créer un nouvel enregistrement</h3>
-    {% endif %}
     </section>
 <section>
-    {% if id != ''%}
-        <form method="post" action="/gestion/show/ram/updatetraitement/{{id}}">
-    {%else%}
-        <form method="post" action="/gestion/traitement">
-    {% endif %}
+    <form method="post" action="/gestion/traitement">
     {% csrf_token %}
     {{ form.as_ul }} <!-- permet d'afficher tous les champs sous forme d'une liste
     -->

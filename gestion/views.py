@@ -8,11 +8,8 @@ from . import models
 def index(request):
     return render(request, 'gestion/index.html')
 
-def ajout1(request):
+def ajout(request):
     return render(request,'gestion/ajout.html')
-
-def ajoutram(request):
-    return render(request,'gestion/ajoutram.html')
 
 def show(request):
     return render(request, 'gestion/show.html')
@@ -43,7 +40,7 @@ def traitement(request):
         return render(request,"gestion/ajoutram.html",{"form": lform})
 
 
-def ajout(request, id):
+def ajoutram(request, id):
     if request.method == "POST":
         form = FormRAM(request)
         if form.is_valid(): # validation du formulaire.
