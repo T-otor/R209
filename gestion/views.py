@@ -8,7 +8,7 @@ from . import models
 def index(request):
     return render(request, 'gestion/index.html')
 
-def ajout(request):
+def ajout1(request):
     return render(request,'gestion/ajout.html')
 
 def ajoutram(request):
@@ -29,7 +29,7 @@ def formulaire(request):
         if form.is_valid():
             return HttpResponseRedirect("/gestion/traitement")
         else:
-            return render(request, 'gestion/ajout.html', {'form': form})
+            return render(request, 'gestion/ajoutram.html', {'form': form})
     else:
         form = FormRAM()
         return render(request, 'gestion/index.html', {'form': form})
@@ -40,7 +40,7 @@ def traitement(request):
         ram = lform.save()
         return render(request,"gestion/index.html",{"Ram" : ram})
     else:
-        return render(request,"gestion/ajout.html",{"form": lform})
+        return render(request,"gestion/ajoutram.html",{"form": lform})
 
 
 def ajout(request, id):
@@ -51,10 +51,10 @@ def ajout(request, id):
             return render(request,"gestion/affiche.html",{"Ram" : ram}) #
 
         else:
-            return render(request,"gestion/ajout.html",{"form": form})
+            return render(request,"gestion/ajoutram.html",{"form": form})
     else :
         form = FormRAM() # création d'un formulaire vide
-        return render(request,"gestion/ajout.html",{"form" : form})
+        return render(request,"gestion/ajoutram.html",{"form" : form})
 
 def deleteram(request, id):
     id = models.RAM.objects.get(pk=id)
@@ -64,7 +64,7 @@ def deleteram(request, id):
 def updateram(request, id):
     ram = models.RAM.objects.get(pk=id)
     form = FormRAM(ram.dico())
-    return render(request, 'gestion/ajout.html',{"form":form, "id":id})
+    return render(request, 'gestion/ajoutram.html',{"form":form, "id":id})
 
 def updateramtraitement(request, id):
     lform = FormRAM(request.POST)
@@ -74,4 +74,4 @@ def updateramtraitement(request, id):
         ram.save()
         return render(request,"gestion/index.html",{"Ram" : ram})
     else:
-        return render(request,"gestion/ajout.html",{"form": lform, 'id':id})
+        return render(request,"gestion/ajoutram.html",{"form": lform, 'id':id})
