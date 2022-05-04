@@ -11,6 +11,9 @@ def index(request):
 def ajout(request):
     return render(request,'gestion/ajout.html')
 
+def ajoutram(request):
+    return render(request,'gestion/ajoutram.html')
+
 def show(request):
     return render(request, 'gestion/show.html')
 
@@ -58,12 +61,12 @@ def deleteram(request, id):
     id.delete()
     return HttpResponseRedirect("/gestion/show/ram")
 
-def update(request, id):
+def updateram(request, id):
     ram = models.RAM.objects.get(pk=id)
     form = FormRAM(ram.dico())
     return render(request, 'gestion/ajout.html',{"form":form, "id":id})
 
-def updatetraitement(request, id):
+def updateramtraitement(request, id):
     lform = FormRAM(request.POST)
     if lform.is_valid():
         ram = lform.save(commit = False)
