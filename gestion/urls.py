@@ -6,6 +6,7 @@ urlpatterns = [
     path('ajout/', views.ajout),
     path('ajout/ram/<int:id>', views.ajoutram),
     path('ajout/cpu/<int:id>', views.ajoutcpu),
+    path('ajout/hdd/<int:id>', views.ajouthdd),
     path('formulaire.html', views.formulaire, name='formulaire'),
     path('traitement', views.traitement),
     path('show', views.show),
@@ -17,4 +18,8 @@ urlpatterns = [
     path('show/cpu', views.showcpu),
     path('show/cpu/update/<int:id>', views.updatecpu),
     path('show/cpu/delete/<int:id>', views.deletecpu),
+    path('show/hdd/update/<int:id>', views.updatehdd),
+    path('show/hdd/delete/<int:id>', views.deletehdd),
+    path('show/hdd', views.showhdd),
+    path('traitementhdd', views.traitementhdd),
 ]

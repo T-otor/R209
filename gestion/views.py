@@ -1,7 +1,7 @@
 from operator import le
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from .forms import FormCPU, FormRAM
+from .forms import FormCPU, FormHDD, FormRAM
 from . import models
 
 # Create your views here.
@@ -89,7 +89,7 @@ def ajoutcpu(request, id):
 def traitementcpu(request):
     lform = FormCPU(request.POST)
     if lform.is_valid():
-        ram = lform.save()
+        cpu = lform.save()
         return render(request,"gestion/index.html",{"Cpu" : cpu})
     else:
         return render(request,"gestion/ajoutcpu.html",{"form": lform})
@@ -100,11 +100,50 @@ def showcpu(request):
     return render(request,"gestion/showcpu.html",{"gestion_cpu" : queryset})
 
 def updatecpu(request, id):
-    ram = models.CPU.objects.get(pk=id)
-    form = FormCPU(ram.dico())
+    cpu = models.CPU.objects.get(pk=id)
+    form = FormCPU(cpu.dico())
     return render(request, 'gestion/ajoutcpu.html',{"form":form, "id":id})
 
 def deletecpu(request, id):
     id = models.CPU.objects.get(pk=id)
     id.delete()
     return HttpResponseRedirect("/gestion/show/cpu")
+
+def updatehdd(request, id):
+    cpu = models.HDD.objects.get(pk=id)
+    form = FormHDD(cpu.dico())
+    return render(request, 'gestion/ajouthdd.html',{"form":form, "id":id})
+
+def deletehdd(request, id):
+    id = models.HDD.objects.get(pk=id)
+    id.delete()
+    return HttpResponseRedirect("/gestion/show/hdd")
+
+
+def showhdd(request):
+    queryset = models.HDD.objects.all()  
+    print(queryset)
+    print(len(queryset))
+    return render(request,"gestion/showhdd.html",{"gestion_hdd" : queryset})
+
+
+def ajouthdd(request, id):
+    if request.method == "POST":
+        form = FormHDD(request)
+        if form.is_valid(): # validation du formulaire.
+            hdd = form.save() # sauvegarde dans la base
+            return render(request,"gestion/affiche.html",{"Hdd" : hdd}) #
+
+        else:
+            return render(request,"gestion/ajouthdd.html",{"form": form})
+    else :
+        form = FormHDD() # création d'un formulaire vide
+        return render(request,"gestion/ajouthdd.html",{"form" : form})
+
+def traitementhdd(request):
+    lform = FormHDD(request.POST)
+    if lform.is_valid():
+        hdd = lform.save()
+        return render(request,"gestion/index.html",{"Hdd" : hdd})
+    else:
+        return render(request,"gestion/ajouthdd.html",{"form": lform})

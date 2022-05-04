@@ -25,3 +25,15 @@ class FormCPU(ModelForm):
             'Fréquence' : _('Fréquence'),
             'SN' : ('Numéro de série')
         }
+
+class FormHDD(ModelForm):
+    class Meta:
+        model = models.HDD
+        fields = ('Marque', 'Modèle', 'Type', 'Espace', 'SN')
+        labels = {
+            'Marque' : _('Marque'),
+            'Modèle' : _('Modèle'),
+            'Type' : _('Type'),
+            'Espace' : _("Espace (préciser l'unité !)"),
+            'SN' : ('Numéro de série')
+        }
