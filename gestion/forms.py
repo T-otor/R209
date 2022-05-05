@@ -37,3 +37,12 @@ class FormHDD(ModelForm):
             'Espace' : _("Espace (préciser l'unité !)"),
             'SN' : ('Numéro de série')
         }
+
+    
+class FormMarque(ModelForm):
+    class Meta:
+        model = models.Marque
+        fields = ('Marque',)
+        labels = {
+            'Marque' : _('Marque')
+        }

@@ -1,10 +1,16 @@
 from django.db import models
 
+class Marque(models.Model):
+    Marque = models.CharField(max_length=100)
+
+class Type(models.Model):
+    Type = models.CharField(max_length=100)
+
 # Create your models here.
 class RAM(models.Model): 
-    Marque = models.CharField(max_length=100) 
+    Marque = models.ForeignKey(Marque, on_delete=models.CASCADE)
     Modèle = models.CharField(max_length = 100)
-    Type = models.CharField(max_length = 4)
+    Type = models.ForeignKey(Type, on_delete=models.CASCADE)
     Capacité = models.CharField(max_length=20)
     SN = models.CharField(max_length=20)
     
@@ -15,9 +21,9 @@ class RAM(models.Model):
         return {'Marque': self.Marque, "Modèle": self.Modèle, 'Type': self.Type, 'Capacité': self.Capacité, 'SN': self.SN}
 
 class CPU(models.Model): 
-    Marque = models.CharField(max_length=100) 
+    Marque = models.ForeignKey(Marque, on_delete=models.CASCADE)
     Modèle = models.CharField(max_length = 100)
-    Fréquence = models.CharField(max_length = 4)
+    Fréquence = models.CharField(max_length = 10)
     SN = models.CharField(max_length=20)
     
     def __str__(self):
@@ -28,9 +34,9 @@ class CPU(models.Model):
     
 
 class HDD(models.Model): 
-    Marque = models.CharField(max_length=100) 
+    Marque = models.ForeignKey(Marque, on_delete=models.CASCADE)
     Modèle = models.CharField(max_length = 100)
-    Type = models.CharField(max_length = 4)
+    Type = models.ForeignKey(Type, on_delete=models.CASCADE)
     Espace = models.CharField(max_length=40)
     SN = models.CharField(max_length=20)
     

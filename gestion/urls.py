@@ -22,4 +22,6 @@ urlpatterns = [
     path('show/hdd/delete/<int:id>', views.deletehdd),
     path('show/hdd', views.showhdd),
     path('traitementhdd', views.traitementhdd),
+    path('', views.index),
+    path('ajout/marque/', views.ajoutemarque),
 ]

@@ -1,7 +1,7 @@
 from operator import le
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from .forms import FormCPU, FormHDD, FormRAM
+from .forms import FormCPU, FormHDD, FormMarque, FormRAM
 from . import models
 
 # Create your views here.
@@ -110,8 +110,8 @@ def deletecpu(request, id):
     return HttpResponseRedirect("/gestion/show/cpu")
 
 def updatehdd(request, id):
-    cpu = models.HDD.objects.get(pk=id)
-    form = FormHDD(cpu.dico())
+    hdd = models.HDD.objects.get(pk=id)
+    form = FormHDD(hdd.dico())
     return render(request, 'gestion/ajouthdd.html',{"form":form, "id":id})
 
 def deletehdd(request, id):
@@ -140,10 +140,24 @@ def ajouthdd(request, id):
         form = FormHDD() # création d'un formulaire vide
         return render(request,"gestion/ajouthdd.html",{"form" : form})
 
-def traitementhdd(request):
+def traitementhdd(request, id):
     lform = FormHDD(request.POST)
     if lform.is_valid():
         hdd = lform.save()
         return render(request,"gestion/index.html",{"Hdd" : hdd})
     else:
         return render(request,"gestion/ajouthdd.html",{"form": lform})
+
+
+def ajoutemarque(request):
+    if request.method == "POST":
+        form = FormMarque(request)
+        if form.is_valid(): # validation du formulaire.
+            marque = form.save() # sauvegarde dans la base
+            return render(request,"gestion/affiche.html",{"Marque" : marque}) #
+
+        else:
+            return render(request,"gestion/ajoutmarque.html",{"form": form})
+    else :
+        form = FormMarque() # création d'un formulaire vide
+        return render(request,"gestion/ajoutmarque.html",{"form" : form})
