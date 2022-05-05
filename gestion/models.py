@@ -2,6 +2,9 @@ from django.db import models
 
 class Marque(models.Model):
     Marque = models.CharField(max_length=100)
+    def __str__(self):
+        chaine = f"{self.Marque}"
+        return chaine
 
 class Type(models.Model):
     Type = models.CharField(max_length=100)

@@ -161,3 +161,11 @@ def ajoutemarque(request):
     else :
         form = FormMarque() # création d'un formulaire vide
         return render(request,"gestion/ajoutmarque.html",{"form" : form})
+
+def traitementmarque(request):
+    lform = FormMarque(request.POST)
+    if lform.is_valid():
+        marque = lform.save()
+        return render(request,"gestion/index.html",{"Marque" : marque})
+    else:
+        return render(request,"gestion/ajoutmarque.html",{"form": lform})        

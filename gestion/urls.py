@@ -9,6 +9,7 @@ urlpatterns = [
     path('ajout/hdd/<int:id>', views.ajouthdd),
     path('formulaire.html', views.formulaire, name='formulaire'),
     path('traitement', views.traitement),
+    path('traitementmarque', views.traitementmarque),
     path('show', views.show),
     path('show/ram', views.showram),
     path('show/ram/delete/<int:id>/', views.deleteram),
