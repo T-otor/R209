@@ -8,6 +8,9 @@ class Marque(models.Model):
 
 class Type(models.Model):
     Type = models.CharField(max_length=100)
+    def __str__(self):
+        chaine = f"{self.Type}"
+        return chaine
 
 # Create your models here.
 class RAM(models.Model): 
@@ -39,7 +42,7 @@ class CPU(models.Model):
 class HDD(models.Model): 
     Marque = models.ForeignKey(Marque, on_delete=models.CASCADE)
     Modèle = models.CharField(max_length = 100)
-    Type = models.ForeignKey(Type, on_delete=models.CASCADE)
+    Type = models.CharField(max_length = 100)
     Espace = models.CharField(max_length=40)
     SN = models.CharField(max_length=20)
     

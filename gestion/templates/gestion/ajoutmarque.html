@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <title>VUAFGROUP SAS - Gestion des stocks informatiques</title>
-    <link rel="stylesheet" type="text/css" href="{%static "gestion/index.css" %}">
-</head>
-<body>
-    <section class="titre">
-    <h1 class="titre">VUAFGROUP SAS </h1>
-    <h2 class="titre">Gestions des stocks informatiques</h2>
+{% extends "/gestion/main.html" %}
+
+        {% block content %}
     <h3 class="titre">Créer un nouvel enregistrement</h3>
     </section>
 <section>
@@ -18,9 +9,11 @@
     {{ form.as_ul }} <!-- permet d'afficher tous les champs sous forme d'une liste
     -->
     <input type="submit" value="envoyer␣les␣données"\>
-    <a href='/gestion/ajout/hdd/1'class="bouton">Ajouter un disque dur / ssd</a>
+    <a href='/gestion/index§'class="bouton">Retour à l'accueil</a>
     </form>
 </section>
 </section>
 </body>
 </html>
+
+{% endblock %}

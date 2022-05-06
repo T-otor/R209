@@ -1,18 +1,11 @@
-<html>
-    <body>
-        {% load static %}
-        <meta charset="UTF-8">
-        <title>VUAFGROUP SAS - Gestion des stocks informatiques</title>
-        <link rel="stylesheet" type="text/css" href="{%static "gestion/index.css" %}">
-    </body>
-    <head>
-        <section class="titre">
-        <h1 class="titre">VUAFGROUP SAS </h1>
-        <h2 class="titre">Gestions des stocks informatiques</h2>
+{% extends "gestion/main.html" %}
+
+        {% block content %}
+        <H2 class="titr">Accueil</h2>
         </section>
         <section class="bouton">
             <a href='/gestion/ajout'class="bouton">Ajout matériel</a>
             <a href='/gestion/show'class="bouton">Voir le matériel enregistrer</a>
         </section>
-    </head>
-</html>
+        
+        {% endblock %}

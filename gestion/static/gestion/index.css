@@ -1,13 +1,18 @@
 .titre{
     text-align: center;
-    background-color: black;
     color: white;
+    background-color: black;
 }
 .tableau{
     text-align: center;
 } 
 .bouton{
     text-align: center;
-    margin: 5%;
-    background-color: red;
+    color: white;
+    background-color: black;
+}
+.section{
+    text-align: center;
+    color: white;
+    background-color: black;
 }
