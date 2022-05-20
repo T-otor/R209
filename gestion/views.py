@@ -140,7 +140,7 @@ def ajouthdd(request, id):
         form = FormHDD() # création d'un formulaire vide
         return render(request,"gestion/ajouthdd.html",{"form" : form})
 
-def traitementhdd(request, id):
+def traitementhdd(request):
     lform = FormHDD(request.POST)
     if lform.is_valid():
         hdd = lform.save()
